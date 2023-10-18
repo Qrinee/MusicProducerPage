@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <h1>Realizacja płatności:</h1>
+    <div id="payment-form">
+        <div id="card-number" placeholder="Numer karty kredytowej"></div>
+        <input type="text" id="card-expiry" placeholder="Data ważności">
+        <input type="text" id="card-cvc" placeholder="CVC">
+      
+        <button id="pay-button">ZAPŁAĆ</button>
+      </div>
+      
+      <script>
+        // Inicjalizacja Stripe.js z kluczem publicznym API
+        var stripe = Stripe('pk_test_51NCefgEA4rN0XY2w04cWyLYqLnq9BpAfPGZ4M1eW5tgGJA9lmS1YTfVBXbklVw6fuZOcQgzkM3cnAip8ORcCkY2300wwZNkWhG');
+      
+        // Tworzenie elementu karty płatności
+        var elements = stripe.elements();
+        var card = elements.create('card');
+      
+        // Montowanie elementu karty na formularzu
+        card.mount('#card-number');
+      
+        // Obsługa kliknięcia przycisku płatności
+        document.getElementById('pay-button').addEventListener('click', function() {
+          // Pobranie tokenu płatności z elementu karty
+          stripe.createToken(card).then(function(result) {
+            if (result.error) {
+              // Obsługa błędu
+              console.error(result.error);
+            } else {
+              // Otrzymanie tokenu płatności
+              var token = result.token;
+              console.log(token);
+              // Wyślij token do serwera
+              // ...
+            }
+          });
+        });
+      </script>
+</body>
+</html>
