@@ -1,6 +1,6 @@
 # Dizzy0nz Beats - Strona HTML
 
-![Dizzy0nz Page](https://i.imgur.com/ICxOxAb.png)
+<img src="https://i.imgur.com/ICxOxAb.png" alt="Dizzy0nz" width="200" height="100">
 
 Dizzy0nz Beats to projekt strony HTML stworzony w celu demonstracji struktury i kodu HTML, CSS oraz JavaScript. 
 Strona ta prezentuje portfolio muzycznego producenta i oferuje informacje o licencjonowaniu jego utworów.
